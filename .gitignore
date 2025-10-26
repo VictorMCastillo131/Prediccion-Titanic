@@ -1,0 +1,38 @@
+# Entorno virtual
+venv/
+env/
+.venv/
+
+# Base de datos SQLite
+*.sqlite3
+*.db
+
+# Archivos de Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Entornos virtuales
+.env
+.venv
+
+# Django
+*.log
+local_settings.py
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de modelo de ML grandes (si los tienes)
+*.pkl
+*.joblib
+*.model

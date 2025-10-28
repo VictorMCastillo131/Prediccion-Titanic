@@ -2,9 +2,11 @@ services:
   - type: web
     name: prediccion-titanic
     env: python
-    pythonVersion: "3.11.8"  # <--- ESTA LÍNEA ES LA SOLUCIÓN
+    # pythonVersion: "3.11.8" 
     plan: free
-    buildCommand: pip install -r requirements.txt && cd backend && python manage.py collectstatic --noinput
+    buildCommand: |
+      pip install -r requirements.txt
+      python backend/manage.py collectstatic --noinput
     startCommand: gunicorn backend.titanic_project.wsgi:application --bind 0.0.0.0:$PORT
     envVars:
       - key: DEBUG

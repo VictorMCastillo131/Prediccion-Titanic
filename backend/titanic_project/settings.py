@@ -38,7 +38,32 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# --- AÑADE ESTA LÍNEA ---
+ROOT_URLCONF = 'backend.titanic_project.urls'
+# ------------------------
+
 # ... (el resto de configuraciones se mantienen igual)
+
+# Añadí la línea que faltaba: ROOT_URLCONF = 'backend.titanic_project.urls'
+# Por favor, asegúrate de que esta línea esté presente en tu archivo settings.py.
+
+TEMPLATES = [ # Asegúrate de tener esta sección también
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
+
+WSGI_APPLICATION = 'backend.titanic_project.wsgi.application' # Verifica que esta línea también esté correcta
 
 # Static files - configuración para desarrollo
 STATIC_URL = '/static/'
@@ -49,7 +74,9 @@ if not DEBUG:
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 else:
     # En desarrollo, servir archivos estáticos normalmente
-    STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+    # STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')] # Comenté esto temporalmente, podría dar error si no existe la carpeta
+    STATICFILES_DIRS = []
+
 
 # Database
 DATABASES = {
@@ -60,9 +87,27 @@ DATABASES = {
 }
 
 # Configuración de CORS
-CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_ALL_ORIGINS = True # Para desarrollo está bien, en producción considera ser más específico
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
     "http://localhost:8000",
+    "http://127.0.0.1:8000", # Añadí este por si acaso
 ]
+
+# Default primary key field type
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Password validation - Asegúrate de tener esto también
+AUTH_PASSWORD_VALIDATORS = [
+    { 'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator', },
+    { 'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator', },
+    { 'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator', },
+    { 'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator', },
+]
+
+# Internationalization - Asegúrate de tener esto también
+LANGUAGE_CODE = 'en-us'
+TIME_ZONE = 'UTC'
+USE_I18N = True
+USE_TZ = True

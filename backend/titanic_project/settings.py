@@ -11,7 +11,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', 'clave-temporal-para-desarrollo')
 DEBUG = os.environ.get('DEBUG', 'True').lower() == 'true'
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '.localhost']
+ALLOWED_HOSTS = [
+    '127.0.0.1', 
+    'localhost', 
+    '.localhost',
+    'prediccion-titanic-vl0y.onrender.com', # <--- AÑADE ESTA LÍNEA
+]
 
 # Application definition
 INSTALLED_APPS = [

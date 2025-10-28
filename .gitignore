@@ -34,5 +34,4 @@ Thumbs.db
 
 # Archivos de modelo de ML grandes (si los tienes)
 *.pkl
-*.joblib
 *.model
